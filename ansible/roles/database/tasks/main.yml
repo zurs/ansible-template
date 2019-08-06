@@ -1,0 +1,15 @@
+---
+  - name: Install MySQL
+    apt:
+      name: mysql-server
+      state: present
+  - name: Adding root user
+    mysql_user:
+      name: root
+      password: "{{ mysql_root_password }}"
+      host: localhost
+      state: present
+  - name: Updating mysql root credentials file
+    template:
+      src: .my.cnf.j2
+      dest: "~/.my.cnf"

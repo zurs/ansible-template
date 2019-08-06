@@ -1,0 +1,16 @@
+---
+  - name: Installing apache2
+    apt:
+      name: apache2
+      state: present
+  - name: Configuring apache2
+    template:
+      src: hello-ansible.conf.j2
+      dest: /etc/apache2/sites-enabled/hello-ansible.conf
+    notify:
+      - restart apache2
+  - name: Deploy code
+    template:
+      src: index.php.j2
+      dest: /var/www/index.php
+  

@@ -1,0 +1,23 @@
+<?php
+
+$dsn = "mysql:host=localhost;charset=utf8mb4";
+
+$options = [
+    
+];
+
+try{
+    $pdo = new PDO($dsn, 'root', {{ mysql_root_password }}, [ PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ]);
+} catch(Exception $e){
+    exit("Could not connect to database");
+}
+
+$stmt = $pdo->query('SELECT UNIX_TIMESTAMP() as timestamp;');
+$row = $stmt->fetch();
+$timestamp = $row->timestamp;
+
+echo "Databasens unix-tid är: $timestamp";
+
+
+
+

@@ -1,0 +1,23 @@
+---
+
+  - hosts: all
+    gather_facts: False
+    tasks:
+    - name: Install python
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python)
+
+  - name: Setting up server
+    become: true
+    hosts: app
+    roles: 
+      - webserver
+    vars_files:
+      - vars.yml
+
+  - name: Setting up server
+    become: true
+    hosts: database
+    roles: 
+      - database
+    vars_files:
+      - vars.yml

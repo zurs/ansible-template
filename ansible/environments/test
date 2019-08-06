@@ -1,0 +1,5 @@
+[app]
+app1 ansible_port=22 ansible_host=68.183.3.99
+
+[database]
+app1
