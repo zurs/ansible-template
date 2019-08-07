@@ -1,8 +1,23 @@
 ---
-  - name: Installing apache2
+  - name: Setup UFW
+    ufw:
+      rule: allow
+      port: "80"
+      state: enabled
+  - name: Install stuff
     apt:
-      name: apache2
+      name: 
+        - apache2
+        - php
+        - php-pdo
+        - php-mysql
       state: present
+    notify: 
+      - restart apache2
+  - name: Removing default apache2 site
+    file:
+      name: /etc/apache2/sites-enabled/000-default.conf
+      state: absent
   - name: Configuring apache2
     template:
       src: hello-ansible.conf.j2

@@ -1,0 +1,7 @@
+---
+
+  - name: Setup UFW
+    ufw:
+      rule: allow
+      name: OpenSSH
+      state: enabled

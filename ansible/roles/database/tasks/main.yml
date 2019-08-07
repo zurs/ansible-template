@@ -1,4 +1,12 @@
 ---
+  - name: Installing pip
+    apt:
+      name:  python-pip
+      state: present
+  - name: Installing python mysql module
+    apt:
+      name: python-mysqldb
+
   - name: Install MySQL
     apt:
       name: mysql-server

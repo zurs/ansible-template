@@ -11,6 +11,7 @@
     hosts: app
     roles: 
       - webserver
+      - default
     vars_files:
       - vars.yml
 
@@ -19,5 +20,6 @@
     hosts: database
     roles: 
       - database
+      - default
     vars_files:
       - vars.yml
