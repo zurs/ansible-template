@@ -4,7 +4,8 @@
       rule: allow
       port: "80"
       state: enabled
-  - name: Setup UFW for http
+      
+  - name: Setup UFW for https
     ufw:
       rule: allow
       port: "443"
