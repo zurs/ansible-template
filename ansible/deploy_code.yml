@@ -1,10 +1,12 @@
 ---
 
-  name: Deploy code
-  hosts: webserver
-  become: true
-  tasks:
-    - name: Deploy code
-      template:
-        src: index.php.j2
-        dest: /var/www/index.php
+  - name: Deploy code
+    hosts: app
+    become: true
+    tasks:
+      - name: Deploy code
+        template:
+          src: ../roles/webserver/templates/index.php.j2
+          dest: /var/www/index.php
+    vars_files:
+      - vars.yml
