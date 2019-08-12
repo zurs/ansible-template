@@ -1,22 +1,11 @@
 <?php
 
-$dsn = "mysql:host=localhost;charset=utf8mb4";
+$now = new DateTime();
+$output = "Current time is " . $now->format("Y-m-d h:i:s");
 
-$options = [
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-];
+$output .= "<br><p>Custom message from vars-file: {{ custom_message }}</p>"
 
-try {
-    $pdo = new PDO($dsn, 'root', '{{ mysql_root_password }}', $options);
-} catch(Exception $e) {
-    exit("Could not connect to database, " . $e->getMessage());
-}
-
-$stmt = $pdo->query('SELECT UNIX_TIMESTAMP() as timestamp;');
-$row = $stmt->fetch();
-$timestamp = $row['timestamp'];
-
-echo "Databasens unix-tid är: ${timestamp}";
+echo $output;
 
 
 

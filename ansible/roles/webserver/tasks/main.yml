@@ -1,16 +1,20 @@
 ---
-  - name: Setup UFW
+  - name: Setup UFW for http
     ufw:
       rule: allow
       port: "80"
       state: enabled
+  - name: Setup UFW for http
+    ufw:
+      rule: allow
+      port: "443"
+      state: enabled
+
   - name: Install stuff
     apt:
       name: 
         - apache2
         - php
-        - php-pdo
-        - php-mysql
       state: present
     notify: 
       - restart apache2

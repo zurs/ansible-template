@@ -14,12 +14,3 @@
       - default
     vars_files:
       - vars.yml
-
-  - name: Setting up server
-    become: true
-    hosts: database
-    roles: 
-      - database
-      - default
-    vars_files:
-      - vars.yml
